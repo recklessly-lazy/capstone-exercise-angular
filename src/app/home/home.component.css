@@ -1,0 +1,82 @@
+.main-content {
+  display: flex;
+  margin: 1rem auto;
+  flex-direction: column;
+  font-family: myFont;
+  /* font-weight: 900; */
+  width: 50%;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.roleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2rem;
+}
+
+.roleCard {
+  width: 40%;
+  padding: 2rem;
+  background-color: rgb(42, 41, 41);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  box-shadow: 1px 2px 3px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.6s all;
+  animation: roleCardEntry 0.4s ease-out 0s;
+}
+.roleCard:hover {
+  box-shadow: 1px 2px 20px #333;
+}
+.img-container {
+  /* height: 100%; */
+  flex-grow: 1;
+  flex-basis: 1;
+  /* height: 100px; */
+  width: auto;
+}
+.img-container img {
+  width: 50%;
+  /* height: 50%; */
+}
+
+.roleCard > button {
+  box-sizing: border-box;
+  border-radius: 2px;
+  background-color: rgb(15, 153, 188);
+  color: white;
+  padding: 0.3rem;
+  /* box-shadow: 0 0 2px #aaa; */
+  border: none;
+  margin-top: 1rem;
+}
+.roleCard > button:focus {
+  border: 3px solid rgb(20, 202, 247);
+}
+
+.roleCard > button:last-of-type {
+  margin-bottom: 1rem;
+}
+
+/*animation*/
+
+@keyframes roleCardEntry {
+  0% {
+    opacity: 0;
+    max-height: 0px;
+  }
+
+  100% {
+    opacity: 1;
+    max-height: 300px;
+  }
+}

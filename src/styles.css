@@ -75,3 +75,8 @@ body{
     font-family: myFontLight;
     src:url(./assets/Fonts/Oswald-Light.ttf);
 }
+
+@font-face {
+    font-family: blackJack;
+    src: url(./assets/Fonts/blackjack.otf);
+}

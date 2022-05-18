@@ -1,142 +1,500 @@
 <div>
-	<!-- SIGNUP -->
-	<div class="container-fluid form-container">
-		<ng-container [ngSwitch]="role">
-			<ng-container *ngSwitchCase="'coaches'" [ngTemplateOutlet]="coachForm"></ng-container>
-			<ng-container *ngSwitchCase="'users'" [ngTemplateOutlet]="userForm">
-			</ng-container>
-		</ng-container>
-	</div>
+  <!-- SIGNUP -->
+  <div
+    class="container-fluid form-container"
+    *ngIf="formDisplay; else registerSuccess"
+  >
+    <ng-container [ngSwitch]="role">
+      <ng-container
+        *ngSwitchCase="'coaches'"
+        [ngTemplateOutlet]="coachForm"
+      ></ng-container>
+      <ng-container *ngSwitchCase="'users'" [ngTemplateOutlet]="userForm">
+      </ng-container>
+    </ng-container>
+  </div>
 </div>
 
-<ng-template #userForm>
-	<div style="color: wheat;">USER FORM</div>
+<ng-template #registerSuccess>
+  <div class="outer">
+    <div class="middle">
+      <div class="successContainer">
+        <div class="img-container" style="height: 10rem">
+          <img
+            [src]="
+              role === 'users'
+                ? '../../assets/Images/UserLogIn.jpg'
+                : '../../assets/Images/LifeCoachLogIn.jpg'
+            "
+            alt="Coach avatar"
+          />
+        </div>
+        <h2>Account created successfully</h2>
+
+        <h5>
+          Your {{ coachId ? "Coach Id" : "User Id" }} is {{ userId || coachId }}
+        </h5>
+        <button class="btn btn-primary ps-5 pe-5 mt-3" (click)="directLogin()">Login Now</button>
+      </div>
+    </div>
+  </div>
 </ng-template>
 
+<!--------------------------------------------------------- User Form ---------------------------------------------------------->
+<ng-template #userForm>
+  <!-- <div style="color: wheat">USER FORM</div> -->
+  <div class="titleContainer">
+    <div class="img-container">
+      <img src="../../assets/Images/UserLogIn.jpg" alt="User avatar" />
+    </div>
+    <h3 style="display: inline">User Profile</h3>
+  </div>
+  <form [formGroup]="userregisterForm" (ngSubmit)="userRegister()">
+    <div class="row">
+      <div class="col-6 form-group">
+        <label for="name">Name</label>
+        <input
+          class="form-control"
+          type="text"
+          name="name"
+          id="name"
+          formControlName="name"
+        />
+        <ng-container [ngTemplateOutlet]="nameErr"></ng-container>
+      </div>
+      <div class="col-6 form-group">
+        <label for="password">Password</label>
+        <input
+          class="form-control"
+          type="password"
+          name="password"
+          id="password"
+          formControlName="password"
+        />
+        <ng-container [ngTemplateOutlet]="passwordErr"></ng-container>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-6 form-group">
+        <label for="password">Date of Birth</label>
+        <input
+          class="form-control"
+          type="date"
+          name="dateOfBirth"
+          id="dateOfBirth"
+          formControlName="dateOfBirth"
+        />
+        <ng-container [ngTemplateOutlet]="dateOfBirthErr"></ng-container>
+      </div>
+      <div class="col-6 form-group">
+        <label for="password">Gender</label>
+        <div class="form-group">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="Male"
+              id="male"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="Female"
+              id="female"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+        </div>
+        <ng-container [ngTemplateOutlet]="genderErr"></ng-container>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-6 form-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="mobileNumber"
+          name="mobileNumber"
+          formControlName="mobileNumber"
+        />
+        <ng-container [ngTemplateOutlet]="mobileNumberErr"></ng-container>
+      </div>
+      <div class="col-6 form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          name="email"
+          formControlName="email"
+        />
+        <ng-container [ngTemplateOutlet]="emailErr"></ng-container>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-6 form-group">
+        <label for="pincode">{{ "pincode" | titlecase }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="pincode"
+          name="pincode"
+          formControlName="pincode"
+        />
+        <ng-container [ngTemplateOutlet]="pincodeErr"></ng-container>
+      </div>
+      <div class="col-6 form-group">
+        <label for="city">{{ "city" | titlecase }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="city"
+          name="city"
+          formControlName="city"
+        />
+        <ng-container [ngTemplateOutlet]="cityErr"></ng-container>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-6 form-group">
+        <label for="state">{{ "state" | titlecase }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="state"
+          name="state"
+          formControlName="state"
+        />
+        <ng-container [ngTemplateOutlet]="stateErr"></ng-container>
+      </div>
+      <div class="col-6 form-group">
+        <label for="country">{{ "country" | titlecase }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="country"
+          name="country"
+          formControlName="country"
+        />
+        <ng-container [ngTemplateOutlet]="countryErr"></ng-container>
+      </div>
+    </div>
+    <div class="row mt-5 mb-4">
+      <button
+        [disabled]="userregisterForm.invalid"
+        class="btn btn-success w-50 m-auto p-1"
+      >
+        Register
+      </button>
+    </div>
+  </form>
+</ng-template>
 
 <!---------------------------------------------------------- Coach Form ---------------------------------------------------------->
 
 <ng-template #coachForm>
-	<div class="titleContainer">
-		<div class="img-container">
-			<img src="../../assets/Images/LifeCoachLogIn.jpg" alt="">
-		</div>
-		<h3 style="display: inline">Life Coach Profile</h3>
-	</div>
-	<form [formGroup]="coachregisterForm">
-		<div class="row">
-			<div class="col-6 form-group">
-				<label for="name">Name</label>
-				<input class="form-control" type="text" name="name" id="name" formControlName="name" />
-				<ng-container [ngTemplateOutlet]="nameErr"></ng-container>
-			</div>
-			<div class="col-6 form-group">
-				<label for="password">Password</label>
-				<input class="form-control" type="password" name="password" id="password" formControlName="password" />
-				<ng-container [ngTemplateOutlet]="passwordErr"></ng-container>
-			</div>
-		</div>
-		<div class="row mt-3">
-			<div class="col-6 form-group">
-				<label for="password">Date of Birth</label>
-				<input class="form-control" type="date" name="dateOfBirth" id="dateOfBirth"
-					formControlName="dateOfBirth" />
-				<ng-container [ngTemplateOutlet]="dateOfBirthErr"></ng-container>
-			</div>
-			<div class="col-6 form-group">
-				<label for="password">Gender</label>
-				<div class="form-group">
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="gender" value="Male" id="male"
-							formControlName="gender" />
-						<label class="form-check-label" for="male">Male</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="gender" value="Female" id="female"
-							formControlName="gender" />
-						<label class="form-check-label" for="female">Female</label>
-					</div>
-				</div>
-				<ng-container [ngTemplateOutlet]="genderErr"></ng-container>
-			</div>
-		</div>
-		<div class="row mt-3">
-			<div class="col-6 form-group">
-				<label for="mobileNumber">Mobile Number</label>
-				<input type="text" class="form-control" id="mobileNumber" name="mobileNumber"
-					formControlName="mobileNumber">
-				<ng-container [ngTemplateOutlet]="mobileNumberErr"></ng-container>
-			</div>
-			<div class="col-6 form-group">
-				<label for="speciality">Speciality</label>
-				<input type="text" class="form-control" id="speciality" name="speciality" formControlName="speciality">
-				<ng-container [ngTemplateOutlet]="specialityErr"></ng-container>
-			</div>
-		</div>
-		<div class="row mt-5 mb-4">
-			<button class="btn btn-success w-50 m-auto p-1">Register</button>
-		</div>
-	</form>
+  <div class="titleContainer">
+    <div class="img-container">
+      <img src="../../assets/Images/LifeCoachLogIn.jpg" alt="Coach avatar" />
+    </div>
+    <h3 style="display: inline">Life Coach Profile</h3>
+  </div>
+  <form [formGroup]="coachregisterForm" (ngSubmit)="coachRegister()">
+    <div class="row">
+      <div class="col-6 form-group">
+        <label for="name">Name</label>
+        <input
+          class="form-control"
+          type="text"
+          name="name"
+          id="name"
+          formControlName="name"
+        />
+        <ng-container [ngTemplateOutlet]="nameErr"></ng-container>
+      </div>
+      <div class="col-6 form-group">
+        <label for="password">Password</label>
+        <input
+          class="form-control"
+          type="password"
+          name="password"
+          id="password"
+          formControlName="password"
+        />
+        <ng-container [ngTemplateOutlet]="passwordErr"></ng-container>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-6 form-group">
+        <label for="password">Date of Birth</label>
+        <input
+          class="form-control"
+          type="date"
+          name="dateOfBirth"
+          id="dateOfBirth"
+          formControlName="dateOfBirth"
+        />
+        <ng-container [ngTemplateOutlet]="dateOfBirthErr"></ng-container>
+      </div>
+      <div class="col-6 form-group">
+        <label for="password">Gender</label>
+        <div class="form-group">
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="Male"
+              id="male"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="male">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="Female"
+              id="female"
+              formControlName="gender"
+            />
+            <label class="form-check-label" for="female">Female</label>
+          </div>
+        </div>
+        <ng-container [ngTemplateOutlet]="genderErr"></ng-container>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-6 form-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <input
+          type="text"
+          class="form-control"
+          id="mobileNumber"
+          name="mobileNumber"
+          formControlName="mobileNumber"
+        />
+        <ng-container [ngTemplateOutlet]="mobileNumberErr"></ng-container>
+      </div>
+      <div class="col-6 form-group">
+        <label for="speciality">Speciality</label>
+        <input
+          type="text"
+          class="form-control"
+          id="speciality"
+          name="speciality"
+          formControlName="speciality"
+        />
+        <ng-container [ngTemplateOutlet]="specialityErr"></ng-container>
+      </div>
+    </div>
+    <div class="row mt-5 mb-4">
+      <button
+        [disabled]="coachregisterForm.invalid"
+        class="btn btn-success w-50 m-auto p-1"
+      >
+        Register
+      </button>
+    </div>
+  </form>
 </ng-template>
 
-
-
-
-
-
-<!-------------------------------------------------Coach Form Error Templates --------------------------------------------------------------->
+<!-------------------------------------------------Form Error Templates --------------------------------------------------------------->
 
 <ng-template #nameErr>
-	<div class="text-danger err" *ngIf="coachregisterForm.controls['name'].errors?.['required'];">
-		Name is required
-	</div>
-	<div class="text-danger err"
-		*ngIf="coachregisterForm.controls['name'].hasError('minlength')||coachregisterForm.controls['name'].hasError('maxlength')">
-		The name should have 3 to 50 characters
-	</div>
+  <div
+    class="text-danger err"
+    *ngIf="coachregisterForm === undefined?userregisterForm.controls['name'].errors?.['required'] :coachregisterForm.controls['name'].errors?.['required']"
+  >
+    Name is required
+  </div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      coachregisterForm === undefined
+        ? userregisterForm.controls['name'].hasError('minlength') ||
+          userregisterForm.controls['name'].hasError('maxlength')
+        : coachregisterForm.controls['name'].hasError('minlength') ||
+          coachregisterForm.controls['name'].hasError('maxlength')
+    "
+  >
+    The name should have 3 to 50 characters
+  </div>
 </ng-template>
 
 <ng-template #passwordErr>
-	<div class="text-danger err" *ngIf="coachregisterForm.controls['password'].hasError('required');">
-		Password is required
-	</div>
-	<div class="text-danger err"
-		*ngIf="coachregisterForm.controls['password'].hasError('minlength')||coachregisterForm.controls['password'].hasError('maxlength')">
-		Password should have 5 to 10 characters
-	</div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      coachregisterForm === undefined
+        ? userregisterForm.controls['password'].hasError('required')
+        : coachregisterForm.controls['password'].hasError('required')
+    "
+  >
+    Password is required
+  </div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      coachregisterForm === undefined
+        ? userregisterForm.controls['password'].hasError('minlength') ||
+          userregisterForm.controls['password'].hasError('maxlength')
+        : coachregisterForm.controls['password'].hasError('minlength') ||
+          coachregisterForm.controls['password'].hasError('maxlength')
+    "
+  >
+    Password should have 5 to 10 characters
+  </div>
 </ng-template>
 
 <ng-template #dateOfBirthErr>
-	<!-- <div class="text-danger err" *ngIf="coachregisterForm.controls['dateOfBirth'].hasError('required');">
-		Date of Birth is required
-	</div> -->
-	<div class="text-danger err" *ngIf="coachregisterForm.controls['dateOfBirth'].hasError('dateOfBirth')">
-		{{coachregisterForm.controls['dateOfBirth'].errors?.['dateOfBirth']}}
-	</div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      coachregisterForm === undefined
+        ? userregisterForm.controls['dateOfBirth'].hasError('dateOfBirth')
+        : coachregisterForm.controls['dateOfBirth'].hasError('dateOfBirth')
+    "
+  >
+    {{coachregisterForm &&
+        coachregisterForm.controls['dateOfBirth'].errors?.['dateOfBirth'] ||
+        userregisterForm &&
+        userregisterForm.controls['dateOfBirth'].errors?.['dateOfBirth']}}
+  </div>
 </ng-template>
 
 <ng-template #genderErr>
-	<div class="text-danger err" *ngIf="coachregisterForm.controls['gender'].hasError('required');">
-		Gender is required
-	</div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      coachregisterForm === undefined
+        ? userregisterForm.controls['gender'].hasError('required')
+        : coachregisterForm.controls['gender'].hasError('required')
+    "
+  >
+    Gender is required
+  </div>
 </ng-template>
 
 <ng-template #mobileNumberErr>
-	<div class="text-danger err" *ngIf="coachregisterForm.controls['mobileNumber'].hasError('required');">
-		Mobile Number is required
-	</div>
-	<div class="text-danger err"
-		*ngIf="coachregisterForm.controls['mobileNumber'].hasError('minlength')||coachregisterForm.controls['mobileNumber'].hasError('maxlength')">
-		Mobile Number should have 10 digits
-	</div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      coachregisterForm === undefined
+        ? userregisterForm.controls['mobileNumber'].hasError('required')
+        : coachregisterForm.controls['mobileNumber'].hasError('required')
+    "
+  >
+    Mobile Number is required
+  </div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      coachregisterForm === undefined
+        ? userregisterForm.controls['mobileNumber'].hasError('minlength') ||
+          userregisterForm.controls['mobileNumber'].hasError('maxlength')
+        : coachregisterForm.controls['mobileNumber'].hasError('minlength') ||
+          coachregisterForm.controls['mobileNumber'].hasError('maxlength')
+    "
+  >
+    Mobile Number should have 10 digits
+  </div>
 </ng-template>
 
 <ng-template #specialityErr>
-	<div class="text-danger err" *ngIf="coachregisterForm.controls['speciality'].hasError('required');">
-		Speciality is required
-	</div>
-	<div class="text-danger err"
-		*ngIf="coachregisterForm.controls['speciality'].hasError('minlength')||coachregisterForm.controls['speciality'].hasError('maxlength')">
-		Speciality should have 10 to 50 characters
-	</div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      coachregisterForm &&
+      coachregisterForm.controls['speciality'].hasError('required')
+    "
+  >
+    Speciality is required
+  </div>
+  <div
+    class="text-danger err"
+    *ngIf="
+      (coachregisterForm &&
+        coachregisterForm.controls['speciality'].hasError('minlength')) ||
+      coachregisterForm.controls['speciality'].hasError('maxlength')
+    "
+  >
+    Speciality should have 10 to 50 characters
+  </div>
+</ng-template>
+
+<ng-template #emailErr>
+  <div
+    class="text-danger err"
+    *ngIf="
+      userregisterForm &&
+      userregisterForm.controls['email'].hasError('required')
+    "
+  >
+    Email is required
+  </div>
+  <div
+    class="text-danger err"
+    *ngIf="userregisterForm.controls['email'].hasError('email')"
+  >
+    {{userregisterForm.controls['email'].errors?.['email']}}
+  </div>
+</ng-template>
+
+<ng-template #pincodeErr>
+  <div
+    class="text-danger err"
+    *ngIf="
+      userregisterForm.controls['pincode'].errors?.['pincode']
+    "
+  >
+    {{userregisterForm.controls['pincode'].errors?.['pincode']}}
+  </div>
+</ng-template>
+
+<ng-template #cityErr>
+  <div
+    class="text-danger err"
+    *ngIf="
+      (userregisterForm &&
+        userregisterForm.controls['city'].hasError('minlength')) ||
+      userregisterForm.controls['city'].hasError('maxlength')
+    "
+  >
+    {{ "The city should have 6 to 20 characters" }}
+  </div>
+</ng-template>
+
+<ng-template #stateErr>
+  <div
+    class="text-danger err"
+    *ngIf="
+      (userregisterForm &&
+        userregisterForm.controls['state'].hasError('minlength')) ||
+      userregisterForm.controls['state'].hasError('maxlength')
+    "
+  >
+    {{ "The state should have 6 to 20 characters" }}
+  </div>
+</ng-template>
+<ng-template #countryErr>
+  <div
+    class="text-danger err"
+    *ngIf="
+      (userregisterForm &&
+        userregisterForm.controls['country'].hasError('minlength')) ||
+      userregisterForm.controls['country'].hasError('maxlength')
+    "
+  >
+    {{ "The country should have 6 to 20 characters" }}
+  </div>
 </ng-template>

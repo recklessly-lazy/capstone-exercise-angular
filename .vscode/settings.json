@@ -1,0 +1,7 @@
+{
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true
+  },
+  "workbench.preferredDarkColorTheme": "Red",
+  "workbench.preferredLightColorTheme": "Firefox Light"
+}

@@ -11,6 +11,6 @@ export class CoachhomeService {
     schedules(): Observable<any> {
         return this.http
             .get<any>("http://localhost:8080/bookings")
-            .pipe(tap({ next: (res) => console.log("inside tap: res = ", res) }));
+            // .pipe(tap({ next: (res) => console.log("inside tap: res = ", res) }));
     }
 }

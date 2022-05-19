@@ -1,1 +1,22 @@
-<p>Ehahaha Coachu coachu</p>
+<!-- <p>{{ booking ? booking.appointmentDate : "No bookings found" }}</p> -->
+
+<div class="coachHome">
+  <div *ngIf="booking; else noBookings" class="booking-container">
+    <h3>Appointment Date: {{ booking.appointmentDate }}</h3>
+    <h4>Slot: {{ booking.slot }}</h4>
+    <h6>Booking id: {{ booking.coachId }}</h6>
+    <h6>User id: {{ booking.userId }}</h6>
+  </div>
+</div>
+
+<ng-template #noBookings>
+  <div class="no-booking-container mt-5">
+    <div class="img-container mt-5" style="height: 100px">
+      <img
+        src="../../../assets/Images/Notepad_icon.svg.png"
+        alt="no schedules"
+      />
+    </div>
+    <h3>No Planned schedules yet</h3>
+  </div>
+</ng-template>

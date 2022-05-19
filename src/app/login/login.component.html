@@ -28,7 +28,7 @@
             />
             <div
               class="text-danger mt-1"
-              *ngIf="loginForm.controls['id'].hasError('required')"
+              *ngIf="loginForm.controls['id'].hasError('required') && loginForm.controls['id'].dirty"
             >
               This field is required
             </div>

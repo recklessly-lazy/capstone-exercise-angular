@@ -1,0 +1,19 @@
+<div class="profile-container">
+  <div class="img-container avatar">
+    <img
+      [src]="
+        coach.gender === 'F'
+          ? '../../../assets/Images/female.png'
+          : '../../../assets/Images/male.png'
+      "
+      alt=""
+    />
+  </div>
+  <div class="details">
+    <h3>{{ coach.name }}</h3>
+    <h4>Coach Id: {{ coach.id }}</h4>
+    <h6>Date of Birth: {{ coach.dateOfBirth }}</h6>
+    <h6>Mobile No: {{ coach.mobileNumber }}</h6>
+    <h6>Speciality: {{ coach.speciality }}</h6>
+  </div>
+</div>

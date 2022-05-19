@@ -1,0 +1,54 @@
+.coaches-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.profile-container {
+  background-color: rgb(250, 255, 255);
+  box-sizing: border-box;
+  border-radius: 0.6rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  color: black;
+  box-shadow: 2px 2px 8px 2px rgb(123, 123, 123), 2px 2px 10px #ccc;
+}
+
+@keyframes entry {
+  0% {
+    opacity: 0;
+    max-height: 0px;
+  }
+  100% {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+.profile-container * {
+  animation: entry 1s ease;
+}
+
+.img-container {
+  height: 150px;
+}
+.avatar {
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.details {
+  /* padding-top: 1rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+@media (min-width: 1200px) {
+  .profile-container {
+    width: 30%;
+  }
+}

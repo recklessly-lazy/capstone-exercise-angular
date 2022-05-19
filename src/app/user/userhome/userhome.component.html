@@ -1,1 +1,29 @@
-<p>User home page</p>
+
+<div *ngIf="coachArray === null; else allCoaches">
+    
+</div>
+
+<ng-template #allCoaches>
+  <div class="coaches-list">
+    <div class="profile-container" *ngFor="let coach of coachArray">
+      <div class="img-container avatar">
+        <img
+          [src]="
+            coach.gender === 'F'
+              ? '../../../assets/Images/female.png'
+              : '../../../assets/Images/male.png'
+          "
+          alt=""
+        />
+      </div>
+      <div class="details">
+        <h3>{{ coach.name }}</h3>
+        <h4>Coach Id: {{ coach.id }}</h4>
+        <!-- <h6>Date of Birth: {{ coach.dateOfBirth }}</h6> -->
+        <h6>Mobile No: {{ coach.mobileNumber }}</h6>
+        <h6>Speciality: {{ coach.speciality }}</h6>
+        <button class="btn btn-primary mt-2 ps-4 pe-4">Book an Appointment</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

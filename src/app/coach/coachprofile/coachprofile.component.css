@@ -8,6 +8,21 @@
     margin: 5rem auto;
     width: 60%;
     color: white;
+    box-shadow: 1px 1px 5px 1px #222;
+}
+
+@keyframes entry{
+    0%{
+        opacity: 0;
+    max-height: 0px;
+    }
+    100%{
+        opacity: 1;
+        max-height: 500px;
+    }
+}
+.profile-container * {
+    animation: entry 1s ease;
 }
 
 .img-container{

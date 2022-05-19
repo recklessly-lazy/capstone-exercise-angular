@@ -1,1 +1,62 @@
-<p>Login component</p>
+<div class="outer">
+  <div class="middle">
+    <div class="form-wrapper">
+      <div class="form-container">
+        <div class="titleContainer">
+          <div class="img-container">
+            <img
+              [src]="
+                role === 'users'
+                  ? '../../assets/Images/UserLogIn.jpg'
+                  : '../../assets/Images/LifeCoachLogIn.jpg'
+              "
+              alt="Avatar"
+            />
+          </div>
+          <h5 style="display: inline">
+            Login as {{ role === "users" ? "User" : "Life Coach" }}
+          </h5>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="form-group mt-4">
+            <input
+              type="text"
+              class="form-control"
+              name="id"
+              formControlName="id"
+              [placeholder]="role === 'users' ? 'User Id' : 'Coach Id'"
+            />
+            <div
+              class="text-danger mt-1"
+              *ngIf="loginForm.controls['id'].hasError('required')"
+            >
+              This field is required
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <input
+              type="text"
+              class="form-control"
+              name="password"
+              formControlName="password"
+              [placeholder]="'password' | titlecase"
+            />
+            <div
+              class="text-danger mt-1"
+              *ngIf="
+                loginForm.controls['password'].hasError('minlength') ||
+                loginForm.controls['password'].hasError('minlength')
+              "
+            >
+              Password should have 5 to 10 characters
+            </div>
+          </div>
+          <button class="btn btn-primary mt-5 p-1 w-100">Login</button>
+        </form>
+        <div class="text-danger">
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

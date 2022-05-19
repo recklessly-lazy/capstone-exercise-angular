@@ -1,47 +1,4 @@
-.successContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* font-family: consolas; */
-}
 
-.outer {
-  display: table;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-.middle {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 400px;
-  /* Whatever width you want */
-}
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(31, 31, 31);
-  color: white;
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  width: 50%;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  margin: 2rem auto;
-  box-sizing: border-box;
-  box-shadow: 0px 0px 5px 1px rgb(37, 37, 37);
-  /* animation: formEntry 1s ease; */
-}
 
 .form-container * {
   animation: formEntry 1s ease;
@@ -69,26 +26,9 @@ button:disabled {
   pointer-events: all !important;
 }
 
-.titleContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-}
 
-.img-container {
-  /* height: 100%; */
-  /* flex-grow: 1; */
-  /* flex-basis: 1; */
-  height: 3.5rem;
-  margin-right: 1rem;
-  /* width: auto; */
-}
-.img-container img {
-  /* width: 50%; */
-  height: 100%;
-}
+
+
 
 .err {
   font-size: 12px;

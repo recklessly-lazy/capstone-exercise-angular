@@ -1,7 +1,8 @@
-<div>
-  <!-- SIGNUP -->
+<!----------------------------------------------- SIGNUP main template ----------------------------------------------->
+
+<div class="form-wrapper">
   <div
-    class="container-fluid form-container"
+    class="form-container"
     *ngIf="formDisplay; else registerSuccess"
   >
     <ng-container [ngSwitch]="role">
@@ -14,6 +15,10 @@
     </ng-container>
   </div>
 </div>
+
+
+
+<!------------------------------------------ Success Screen after registration ------------------------------------------------>
 
 <ng-template #registerSuccess>
   <div class="outer">

@@ -1,0 +1,15 @@
+.form-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-wrapper input, .text-danger{
+    font-size: 12px;
+}
+
+.form-container{
+    padding: 1.5rem;
+    min-width: 20%;
+    /* align-items: stretch; */
+}

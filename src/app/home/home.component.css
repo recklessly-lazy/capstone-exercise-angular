@@ -31,20 +31,20 @@
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
   /* cursor: pointer; */
-  transition: 1s all;
+  transition: 0.5s all;
   /* animation: roleCardEntry 0.4s ease-out 0s; */
 }
 .roleCard *{
-  animation: roleCardEntry 1s ease-out 0s;
+  animation: roleCardEntry 0.5s ease-out 0s;
 }
 .roleCard:hover {
-  box-shadow: 1px 2px 15px rgb(70, 70, 70),0px 0px 10px rgb(1, 69, 255), 0 0 40px rgb(182, 204, 255);
+  box-shadow: 1px 2px 15px rgb(70, 70, 70),0px 0px 10px rgb(255, 31, 1), 0 0 40px rgb(255, 212, 182);
 }
 .img-container {
   /* height: 100%; */
   flex-grow: 1;
   flex-basis: 1;
-  /* height: 100px; */
+  height: 100px;
   width: auto;
 }
 .img-container img {

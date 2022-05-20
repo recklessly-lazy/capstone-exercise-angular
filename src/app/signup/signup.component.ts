@@ -169,10 +169,10 @@ function ageCalculator(fc: FormControl) {
 
 function validatePin(control: FormControl) {
     let pincode: string = control ? control.value.toString() : "";
-    if (pincode.length === 6) {
-        return null;
-    } else {
+    if (pincode && pincode.length !== 6) {
         return { pincode: "Pincode should have exactly 6 digits" };
+    } else {
+        return null;
     }
 }
 

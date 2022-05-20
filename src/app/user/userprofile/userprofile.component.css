@@ -1,0 +1,48 @@
+.profile-container {
+  background-color: rgb(31, 31, 31);
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  margin: 5rem auto;
+  width: 60%;
+  color: white;
+  box-shadow: 1px 1px 5px 1px #222;
+}
+
+@keyframes entry {
+  0% {
+    opacity: 0;
+    max-height: 0px;
+  }
+  100% {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+.profile-container * {
+  animation: entry 1s ease;
+}
+
+.img-container {
+  height: 150px;
+}
+.avatar {
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.details {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+@media (min-width: 1200px) {
+  .profile-container {
+    width: 30%;
+  }
+}

@@ -1,0 +1,27 @@
+<div class="profile-container" >
+  <div class="img-container avatar">
+    <img
+      [src]="
+        user.gender === 'F'
+          ? '../../../assets/Images/female.png'
+          : '../../../assets/Images/male.png'
+      "
+      alt=""
+    />
+  </div>
+  <div class="details">
+    <h3>{{ user.name }}</h3>
+    <!-- <h4>Coach Id: {{ user.id }}</h4> -->
+
+    <h6>Date of Birth: {{ user.dateOfBirth }}</h6>
+    <h6>Email id: {{ user.email }}</h6>
+    <h6>Mobile No: {{ user.mobileNumber }}</h6>
+    <h6>
+      Address:
+      {{
+        user.city + ", " + user.state + ", " + user.country
+      }}
+    </h6>
+    <h6>Pincode: {{ user.pincode }}</h6>
+  </div>
+</div>

@@ -19,7 +19,7 @@ import { UserhomeService } from "./userhome.service";
 export class UserhomeComponent implements OnInit {
     coachArray!: Coach[];
     coachId!: any;
-    userDetails!: User;
+    
     id: number = 1;
     appointmentDetails!: any;
     appointmentForm!: FormGroup;

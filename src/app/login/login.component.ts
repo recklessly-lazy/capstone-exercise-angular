@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
         else this.router.navigate(["coach"]);
     }
     login() {
+        console.log("role = ", this.role);
         this.loginService
             .login(this.role, this.loginForm.value["id"])
             .subscribe({
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.role = this.route.snapshot.paramMap.get("role");
+        console.log("role = ", this.role);
         this.loginForm = this.fb.group({
             id: ["", Validators.required],
             password: [

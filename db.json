@@ -54,6 +54,12 @@
       "userId": 2,
       "coachId": 2,
       "id": 1
+    },
+    {
+      "appointmentDate": "2022-05-25",
+      "slot": "2 PM to 3 PM",
+      "coachId": 1,
+      "id": 2
     }
   ]
 }

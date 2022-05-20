@@ -12,7 +12,10 @@ export class LoginService {
     getCoachId() {
         return this.coachId;
     }
-
+    getUserId() {
+        return this.userId;
+    }
+    
     login(role: string | null, id: string): Observable<any> {
         console.log(`id: ${id}`);
         return this.http.get<any>(`http://localhost:8080/${role}/${id}`).pipe(

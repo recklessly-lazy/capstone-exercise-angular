@@ -5,6 +5,51 @@
   flex-wrap: wrap;
 }
 
+.appointment-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  padding: 1.5rem 2rem;
+  color: white;
+  justify-content: space-evenly;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 8px #444;
+}
+
+.appointment-success button{
+  padding: 0.2rem 1rem;
+  background-color: rgb(29, 177, 226);
+  color: white;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: 0 0 4px #000;
+  margin-top: 1rem;
+}
+
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 5rem auto;
+}
+.form-container {
+  display: inline-flex;
+  width: 50%;
+}
+
+.center-wrapper :not(h4) {
+  /* color:red */
+  font-size: 13px;
+}
+
+.titleContainer {
+  margin: 1rem;
+}
+.titleContainer > .img-container {
+  height: 50px;
+}
 .profile-container {
   background-color: rgb(250, 255, 255);
   box-sizing: border-box;

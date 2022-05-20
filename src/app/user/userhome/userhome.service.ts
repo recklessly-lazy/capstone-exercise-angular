@@ -7,6 +7,11 @@ import { Coach } from "src/app/coach/Coach.model";
     providedIn: "root",
 })
 export class UserhomeService {
+    confirmAppointment(data: Object): Observable<any> {
+        return this.http
+            .post<any>("http://localhost:8080/bookings", data)
+            .pipe(tap((res) => console.log("res:", res)));
+    }
     allcoaches(): Observable<Coach[]> {
         return this.http
             .get<Coach[]>("http://localhost:8080/coaches")

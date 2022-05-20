@@ -27,6 +27,10 @@
   align-items: center;
   margin-bottom: 1rem;
 }
+
+.titleContainer > .img-container{
+  height: 50px;
+}
 .successContainer {
   display: flex;
   flex-direction: column;

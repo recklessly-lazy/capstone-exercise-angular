@@ -1,0 +1,46 @@
+<div class="appointment-parent">
+  <div class="form-wrapper">
+    <ng-container *ngIf="userAppointmentsList.length > 0; else noAppointments">
+      <div
+        class="form-container"
+        *ngFor="let appointment of userAppointmentsList"
+      >
+        <h3>Appointment Date: {{ appointment.appointmentDate }}</h3>
+        <br />
+        <h5>Slot: {{ appointment.slot }}</h5>
+        <br /><br />
+        <h6>Booking id: {{ appointment.id }}</h6>
+        <h6>User id: {{ appointment.userId }}</h6>
+        <h6>Coach id: {{ appointment.coachId }}</h6>
+        <button class="btn mt-3 color text-white custom">
+          Reschedule Appointment
+        </button>
+        <button class="btn btn-danger mt-3">Cancel Appointment</button>
+      </div>
+    </ng-container>
+    <button class="btn mt-3 color text-white custom" routerLink="/user/home">
+      <i class="fa-solid fa-arrow-left"></i> Go back
+    </button>
+  </div>
+</div>
+
+<ng-template #noAppointments>
+  <div
+    style="
+      margin: 3rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 30%;
+    "
+  >
+    <div class="img-container">
+      <img
+        src="../../../assets/Images/Notepad_icon.svg.png"
+        alt="no appointments"
+      />
+    </div>
+    <h4 class="mt-3">You haven't made any appointments yet</h4>
+  </div>
+</ng-template>

@@ -1,6 +1,17 @@
 .contentos {
   height: 100%;
 }
+@keyframes roleCardEntry {
+  0% {
+    opacity: 0;
+    max-height: 0px;
+  }
+
+  100% {
+    opacity: 1;
+    max-height: 300px;
+  }
+}
 .img-container {
   /* height: 100%; */
   /* flex-grow: 1; */
@@ -16,6 +27,7 @@
 
 .form-wrapper {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -28,7 +40,7 @@
   margin-bottom: 1rem;
 }
 
-.titleContainer > .img-container{
+.titleContainer > .img-container {
   height: 50px;
 }
 .successContainer {

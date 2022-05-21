@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { LoginService } from "src/app/login/login.service";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: "root",
 })
 export class AppointmentsService {
+    constructor(private loginService: LoginService, private http: HttpClient) {}
 
-  constructor() { }
-
-
+    appointment(): Observable<any[]> {
+        return this.http.get<any>("http://localhost:8080/bookings");
+    }
 }

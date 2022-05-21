@@ -57,9 +57,24 @@
     },
     {
       "appointmentDate": "2022-05-25",
-      "slot": "2 PM to 3 PM",
+      "slot": "4 PM to 5 PM",
+      "userId": 1,
       "coachId": 1,
       "id": 2
+    },
+    {
+      "appointmentDate": "2022-05-23",
+      "slot": "3 PM to 4 PM",
+      "userId": 1,
+      "coachId": 2,
+      "id": 3
+    },
+    {
+      "appointmentDate": "2022-05-27",
+      "slot": "11 AM to 12 PM",
+      "userId": 1,
+      "coachId": 1,
+      "id": 4
     }
   ]
 }

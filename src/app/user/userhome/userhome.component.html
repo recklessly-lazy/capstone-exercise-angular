@@ -35,7 +35,9 @@
       *ngIf="appointmentConfirmed && displayForm"
     >
       <h5>Your Appointment is scheduled successfully</h5>
-      <button (click)="appointmentConfirmed = false; displayForm = false">Go back</button>
+      <button (click)="appointmentConfirmed = false; displayForm = false">
+        Go back
+      </button>
     </div>
     <div class="form-container" *ngIf="displayForm && !appointmentConfirmed">
       <div class="titleContainer">
@@ -96,7 +98,7 @@
             (click)="resetForm(); this.displayForm = false"
             class="btn btn-danger"
           >
-            Go back to coaches list
+            <i class="fa-solid fa-arrow-left"></i>Go back to coaches list
           </button>
           <button
             type="submit"

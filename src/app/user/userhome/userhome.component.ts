@@ -15,7 +15,6 @@ import { UserhomeService } from "./userhome.service";
     selector: "app-userhome",
     templateUrl: "./userhome.component.html",
     styleUrls: ["./userhome.component.css"],
-    providers:[LoginService]
 })
 export class UserhomeComponent implements OnInit {
     coachArray!: Coach[];
@@ -72,7 +71,7 @@ export class UserhomeComponent implements OnInit {
         return this.userHomeService.allcoaches();
     }
     ngOnInit() {
-        this.id = this.loginService.getUserId() ?? this.id;
+        this.id = this.loginService.getUserId();
         console.log(`user Id: ${this.id}`);
         this.getAllCoaches().subscribe({
             next: (coaches) => {

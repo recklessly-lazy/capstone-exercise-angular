@@ -1,0 +1,42 @@
+.form-container {
+  /* width: 30%; */
+  max-width: 40%;
+  align-items: stretch;
+}
+
+.form-wrapper *{
+  animation: roleCardEntry 0.7s ease;
+}
+
+@keyframes roleCardEntry {
+  0% {
+    opacity: 0;
+    max-height: 0px;
+  }
+
+  100% {
+    opacity: 1;
+    max-height: 400px;
+  }
+}
+.custom {
+  background-color: rgb(17, 168, 206);
+}
+
+.custom:last-of-type{
+  box-shadow: 1px 1px 5px #333;
+}
+
+.custom:hover{
+  background-color: rgb(15, 129, 158);
+}
+
+.form-container button{
+  font-size: 12px;
+}
+
+@media(min-width: 1000px){
+  .form-container{
+    max-width: 30%;
+  }
+}

@@ -1,5 +1,9 @@
-<div class="appointment-parent">
-  <div class="form-wrapper">
+<div class="form-wrapper">
+  <div class="appointment-success" *ngIf="deleteSuccess; else appointments">
+    <h5>Your Appointment is cancelled successfully</h5>
+    <button routerLink="/user/home">Go back</button>
+  </div>
+  <ng-template #appointments>
     <ng-container *ngIf="userAppointmentsList.length > 0; else noAppointments">
       <div
         class="form-container"
@@ -15,14 +19,48 @@
         <button class="btn mt-3 color text-white custom">
           Reschedule Appointment
         </button>
-        <button class="btn btn-danger mt-3">Cancel Appointment</button>
+        <button
+          (click)="showConfirmationModal = true; toCancel = appointment.id"
+          class="btn btn-danger mt-3"
+        >
+          Cancel Appointment
+        </button>
       </div>
     </ng-container>
     <button class="btn mt-3 color text-white custom" routerLink="/user/home">
       <i class="fa-solid fa-arrow-left"></i> Go back
     </button>
-  </div>
+    <ng-container
+      *ngIf="showConfirmationModal"
+      [ngTemplateOutlet]="modal"
+    ></ng-container>
+  </ng-template>
 </div>
+
+<ng-template #modal>
+  <div class="backdrop" (click)="showConfirmationModal = false"></div>
+  <div class="cancel-modal">
+    <h5>Are you sure you need to cancel the appointment ?</h5>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <button (click)="cancelAppointment()" class="btn btn-success m-2 w-25">
+        Yes
+      </button>
+      <button
+        (click)="showConfirmationModal = false"
+        class="btn btn-danger m-2 w-25"
+      >
+        No
+      </button>
+    </div>
+  </div>
+</ng-template>
 
 <ng-template #noAppointments>
   <div

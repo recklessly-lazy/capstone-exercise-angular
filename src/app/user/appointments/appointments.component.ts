@@ -16,12 +16,26 @@ import { AppointmentsService } from "./appointments.service";
 export class AppointmentsComponent implements OnInit {
     _userAppointmentsList!: any[];
     userId!: any;
+    showConfirmationModal!: boolean;
+    toCancel!: any;
+
+    deleteSuccess!: boolean;
     constructor(
         private loginService: LoginService,
         private appointmentService: AppointmentsService
-    ) { }
+    ) {}
     get userAppointmentsList() {
         return this._userAppointmentsList ?? {};
+    }
+
+    cancelAppointment() {
+        console.log("to cancel:", this.toCancel);
+        this.appointmentService.cancelAppointment(this.toCancel).subscribe({
+            next: (res) =>
+                res
+                    ? (this.deleteSuccess = true)
+                    : (this.deleteSuccess = false),
+        });
     }
 
     appointment() {

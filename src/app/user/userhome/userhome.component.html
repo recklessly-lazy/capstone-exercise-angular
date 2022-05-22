@@ -35,7 +35,7 @@
       *ngIf="appointmentConfirmed && displayForm"
     >
       <h5>Your Appointment is scheduled successfully</h5>
-      <button (click)="appointmentConfirmed = false; displayForm = false">
+      <button routerLink="/user/appointments">
         Go back
       </button>
     </div>
